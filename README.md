@@ -24,4 +24,4 @@ async_fifo_top
  ├── sync_w2r        # 2-FF synchronizer (Write pointer -> Read domain)
  ├── wptr_full       # Write pointer binary/Gray counters & registered wfull logic
  ├── rptr_empty      # Read pointer binary/Gray counters & registered rempty logic
- └── fifomem         # Dual-port parameterizable memory array
+ └── fifo_mem         # Dual-port parameterizable memory array
