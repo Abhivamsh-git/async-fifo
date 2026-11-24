@@ -20,8 +20,7 @@ A synthesizable, parameterized **Asynchronous FIFO** implemented in Verilog HDL 
 
 ```text
 async_fifo_top
- ├── sync_r2w        # 2-FF synchronizer (Read pointer -> Write domain)
- ├── sync_w2r        # 2-FF synchronizer (Write pointer -> Read domain)
+ ├── ff_sync
  ├── wptr_full       # Write pointer binary/Gray counters & registered wfull logic
  ├── rptr_empty      # Read pointer binary/Gray counters & registered rempty logic
  └── fifo_mem         # Dual-port parameterizable memory array
