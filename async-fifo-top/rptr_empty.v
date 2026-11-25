@@ -5,7 +5,7 @@ module read_control #(parameter ADDR_WIDTH = 3)
     input r_en,
     input [ADDR_WIDTH:0] sync_wr_ptr_gray,
     
-    output empty,
+    output reg empty,
     output [ADDR_WIDTH-1:0] rd_addr,
     output reg [ADDR_WIDTH:0] rd_ptr_gray
   );
@@ -14,22 +14,25 @@ module read_control #(parameter ADDR_WIDTH = 3)
   
   wire [ADDR_WIDTH:0] rd_ptr_bin_next;
   wire [ADDR_WIDTH:0] rd_ptr_gray_next;
+  wire empty_val;
   
   assign rd_ptr_bin_next  = rd_ptr_bin + (r_en && !empty);
   assign rd_ptr_gray_next = rd_ptr_bin_next ^ (rd_ptr_bin_next >> 1);
   
   assign rd_addr = rd_ptr_bin[ADDR_WIDTH-1:0];
   
-  assign empty = (rd_ptr_gray == sync_wr_ptr_gray); 
+  assign empty_val = (rd_ptr_gray_next == sync_wr_ptr_gray); 
   
   always @(posedge rclk or negedge rrstn) begin
     if(!rrstn) begin
       rd_ptr_bin <= 0;
       rd_ptr_gray <= 0;
+      empty <= 1;
     end
     else begin
       rd_ptr_bin <= rd_ptr_bin_next;
       rd_ptr_gray <= rd_ptr_gray_next;
+      empty <= empty_val;
     end
   end
   
