@@ -20,6 +20,7 @@ A synthesizable, parameterized **Asynchronous FIFO** implemented in Verilog HDL 
 
 ```text
 async_fifo_top
+ ├── async_fifo
  ├── ff_sync
  ├── wptr_full       # Write pointer binary/Gray counters & registered wfull logic
  ├── rptr_empty      # Read pointer binary/Gray counters & registered rempty logic
