@@ -36,6 +36,6 @@ module async_fifo #(parameter DATA_WIDTH = 8,
 
   ff_sync m2(.clk(wclk), .rstn(wrstn), .din(rd_ptr_gray), .dout(sync_rd_ptr_gray));
   
-  dual_port_ram mem1(.wclk(wclk), .w_en(w_en), .wr_addr(wr_addr), .wdata(wdata), .rclk(rclk), .r_en(r_en), .rd_addr(rd_addr), .rdata(rdata));
+  dual_port_ram mem1(.wclk(wclk), .w_en(w_en), .wr_addr(wr_addr), .wdata(wdata), .rclk(rclk), .r_en(r_en), .rd_addr(rd_addr), .rdata(rdata), .full(full), .empty(empty));
   
 endmodule
